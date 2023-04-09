@@ -40,7 +40,7 @@ struct SuffixIterator: IteratorProtocol {
         
         return Suffix(
             suffix: String(substring),
-            index: self.startIndex
+            index: suffixArray[self.startIndex - 1]
         )
     }
     
