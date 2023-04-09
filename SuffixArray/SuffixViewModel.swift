@@ -12,6 +12,8 @@ final class SuffixViewModel: ObservableObject {
     @Published var suffixToCount = [String : Int]()
     
     func countSuffixMatchesIn(text: String) {
+        // 4. Перед показом View разложить все полученные слова в тексте на SuffixSequence
+        // 6. Обернуть в SuffixSequence каждое слово из полученное из шаринга
         let suffixes = text.components(separatedBy: " ").flatMap { SuffixSequence(word: $0).suffixes().filter { $0.suffix.count >= 3 } }
         suffixToCount = {
             var result = [String : Int]()

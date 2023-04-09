@@ -7,6 +7,8 @@
 
 import Foundation
 
+// 1. Реализовать для приложения https://ru.wikipedia.org/wiki/Суффиксный_массив
+
 final class SuffixArrayService {
     static func suffixArray(_ s: String) -> [Int] {
         let n = s.count

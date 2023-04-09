@@ -23,6 +23,7 @@ struct SuffixSequence: Sequence {
     
 }
 
+// 5. Как показано в уроке создать SuffixIterator
 struct SuffixIterator: IteratorProtocol {
     
     let word: String
