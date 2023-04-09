@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var inputText = ""
+    @ObservedObject private var viewModel = SuffixViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            TextField("Search", text: $inputText)
+                .padding()
+                .background(Color.gray.opacity(0.2))
+                .onChange(of: inputText) { viewModel.countSuffixMatchesIn(text: $0) }
+            List {
+                ForEach(viewModel.suffixToMatches.sorted(by: >), id: \.key) { key, value in
+                    Text("\(key) - \(value)")
+                }
+            }
         }
-        .padding()
     }
 }
 

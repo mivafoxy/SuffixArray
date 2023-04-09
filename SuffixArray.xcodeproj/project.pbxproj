@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		ED32311029BF525D00725931 /* SuffixArrayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32310F29BF525D00725931 /* SuffixArrayApp.swift */; };
-		ED32311229BF525D00725931 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32311129BF525D00725931 /* ContentView.swift */; };
 		ED32311429BF526000725931 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED32311329BF526000725931 /* Assets.xcassets */; };
 		ED32311729BF526000725931 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED32311629BF526000725931 /* Preview Assets.xcassets */; };
+		ED32311E29BF528800725931 /* WrappedSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32311D29BF528800725931 /* WrappedSequence.swift */; };
+		EDEF23E529BF64CF00220895 /* SuffixArrayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEF23E429BF64CF00220895 /* SuffixArrayService.swift */; };
+		EDF8468229E2C88200B2BE43 /* SuffixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8468129E2C88200B2BE43 /* SuffixViewModel.swift */; };
+		EDF8468429E2D39700B2BE43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8468329E2D39700B2BE43 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED32310C29BF525D00725931 /* SuffixArray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuffixArray.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED32310F29BF525D00725931 /* SuffixArrayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixArrayApp.swift; sourceTree = "<group>"; };
-		ED32311129BF525D00725931 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED32311329BF526000725931 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED32311629BF526000725931 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ED32311D29BF528800725931 /* WrappedSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedSequence.swift; sourceTree = "<group>"; };
+		EDEF23E429BF64CF00220895 /* SuffixArrayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixArrayService.swift; sourceTree = "<group>"; };
+		EDF8468129E2C88200B2BE43 /* SuffixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixViewModel.swift; sourceTree = "<group>"; };
+		EDF8468329E2D39700B2BE43 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +57,13 @@
 		ED32310E29BF525D00725931 /* SuffixArray */ = {
 			isa = PBXGroup;
 			children = (
+				EDF8468329E2D39700B2BE43 /* ContentView.swift */,
 				ED32310F29BF525D00725931 /* SuffixArrayApp.swift */,
-				ED32311129BF525D00725931 /* ContentView.swift */,
 				ED32311329BF526000725931 /* Assets.xcassets */,
 				ED32311529BF526000725931 /* Preview Content */,
+				ED32311D29BF528800725931 /* WrappedSequence.swift */,
+				EDEF23E429BF64CF00220895 /* SuffixArrayService.swift */,
+				EDF8468129E2C88200B2BE43 /* SuffixViewModel.swift */,
 			);
 			path = SuffixArray;
 			sourceTree = "<group>";
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED32311229BF525D00725931 /* ContentView.swift in Sources */,
+				EDEF23E529BF64CF00220895 /* SuffixArrayService.swift in Sources */,
+				EDF8468429E2D39700B2BE43 /* ContentView.swift in Sources */,
 				ED32311029BF525D00725931 /* SuffixArrayApp.swift in Sources */,
+				EDF8468229E2C88200B2BE43 /* SuffixViewModel.swift in Sources */,
+				ED32311E29BF528800725931 /* WrappedSequence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
