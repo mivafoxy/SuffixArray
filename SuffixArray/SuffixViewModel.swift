@@ -9,29 +9,36 @@ import Foundation
 import SwiftUI
 
 final class SuffixViewModel: ObservableObject {
-    @Published var suffixToMatches = [String : Int]()
+    @Published var suffixToCount = [String : Int]()
     
     func countSuffixMatchesIn(text: String) {
-        suffixToMatches.removeAll()
-        let words = text.components(separatedBy: " ")
-        
-        var suffixes = [String]()
-        for word in words {
-            let suffixArray = SuffixArrayService.suffixArray(word)
-            let suffs = suffixArray.compactMap {
-                let index = word.index(word.startIndex, offsetBy: $0)
-                let resultString = String(word[index..<word.endIndex])
-                return resultString.count >= 3 ? resultString : nil
+        let suffixes = text.components(separatedBy: " ").flatMap { SuffixSequence(word: $0).suffixes().filter { $0.suffix.count >= 3 } }
+        suffixToCount = {
+            var result = [String : Int]()
+            for suffix in suffixes {
+                if let count = result[suffix.suffix] {
+                    result[suffix.suffix] = count + 1
+                } else {
+                    result[suffix.suffix] = 1
+                }
             }
-            suffixes.append(contentsOf: suffs)
+            return result
+        }()
+    }
+    
+    func sortedDict(by: PickerSortSelecor) -> [Dictionary<String, Int>.Element] {
+        switch by {
+        case .asc:
+            return suffixToCount.sorted(by: <)
+        case .desc:
+            return suffixToCount.sorted(by: >)
         }
-        
-        for suffix in suffixes {
-            if let count = suffixToMatches[suffix] {
-                suffixToMatches[suffix] = count + 1
-            } else {
-                suffixToMatches[suffix] = 1
-            }
+    }
+    
+    func getTopOfSuffixes() -> [Dictionary<String, Int>.Element] {
+        Array(suffixToCount.sorted { leftValue, rightValue in
+            return leftValue.value > rightValue.value
         }
+        .prefix(10))
     }
 }
