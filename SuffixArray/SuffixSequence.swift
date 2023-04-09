@@ -5,16 +5,18 @@
 //  Created by Илья Малахов on 13.03.2023.
 //
 
+extension String {
+    func suffixArray() -> [Int] {
+        SuffixArrayService.suffixArray(self).sorted(by: >)
+    }
+}
+
 struct SuffixSequence: Sequence {
     
     let word: String
     
     func makeIterator() -> SuffixIterator {
-        SuffixIterator(word: word)
-    }
-    
-    func suffixArray() -> [Int] {
-        SuffixArrayService.suffixArray(self.word)
+        SuffixIterator(word: word, suffixArray: word.suffixArray())
     }
     
     func suffixes() -> [Suffix] {
@@ -27,16 +29,18 @@ struct SuffixSequence: Sequence {
 struct SuffixIterator: IteratorProtocol {
     
     let word: String
+    let suffixArray: [Int]
     var startIndex: Int = 0
     
     mutating func next() -> (suffix: String, index: Int)? {
-        guard startIndex < word.count else { return nil }
-        startIndex += 1
-        let substring = word.suffix(startIndex)
+        guard startIndex < suffixArray.count else { return nil }
+        let startIndex = word.index(word.startIndex, offsetBy: suffixArray[startIndex])
+        self.startIndex += 1
+        let substring = word[startIndex..<word.endIndex]
         
         return Suffix(
             suffix: String(substring),
-            index: word.count - startIndex
+            index: self.startIndex
         )
     }
     
