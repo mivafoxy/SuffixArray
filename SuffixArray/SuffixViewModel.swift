@@ -9,24 +9,38 @@ import Foundation
 import SwiftUI
 
 final class SuffixViewModel: ObservableObject {
+    private let jobQueue = JobQueue(concurrency: 5)
     @Published var suffixToCount = [String : Int]()
     
-    func countSuffixMatchesIn(text: String) {
-        // 4. Перед показом View разложить все полученные слова в тексте на SuffixSequence
-        // 6. Обернуть в SuffixSequence каждое слово из полученное из шаринга
-        
+    @MainActor
+    func countSuffixMatchesIn(text: String) async {        
         let words = text.components(separatedBy: " ")
         
+        let allResults = try! await withThrowingTaskGroup(of: [String].self, returning: [String].self) { taskGroup in
+            for word in words {
+                taskGroup.addTask {
+                    let startTime = DispatchTime.now().uptimeNanoseconds
+                    let result = try! await self.jobQueue.enqueue(operation: { word.lowercased().suffixArray() })
+                    let endTime = DispatchTime.now().uptimeNanoseconds
+                    print(endTime - startTime)
+                    return result
+                }
+            }
+            
+            var result = [String]()
+            for try await task in taskGroup {
+                result.append(contentsOf: task)
+            }
+            return result
+        }
         
-        
-        let suffixes = text.components(separatedBy: " ").flatMap { SuffixSequence(word: $0.lowercased()).suffixes().filter { $0.suffix.count >= 3 } }
         suffixToCount = {
             var result = [String : Int]()
-            for suffix in suffixes {
-                if let count = result[suffix.suffix] {
-                    result[suffix.suffix] = count + 1
+            for suffix in allResults {
+                if let count = result[suffix] {
+                    result[suffix] = count + 1
                 } else {
-                    result[suffix.suffix] = 1
+                    result[suffix] = 1
                 }
             }
             return result
