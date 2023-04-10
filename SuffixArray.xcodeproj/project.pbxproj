@@ -14,6 +14,7 @@
 		EDEF23E529BF64CF00220895 /* SuffixArrayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEF23E429BF64CF00220895 /* SuffixArrayService.swift */; };
 		EDF8468229E2C88200B2BE43 /* SuffixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8468129E2C88200B2BE43 /* SuffixViewModel.swift */; };
 		EDF8468429E2D39700B2BE43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8468329E2D39700B2BE43 /* ContentView.swift */; };
+		EDF8468629E3324500B2BE43 /* JobQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8468529E3324500B2BE43 /* JobQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		EDEF23E429BF64CF00220895 /* SuffixArrayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixArrayService.swift; sourceTree = "<group>"; };
 		EDF8468129E2C88200B2BE43 /* SuffixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixViewModel.swift; sourceTree = "<group>"; };
 		EDF8468329E2D39700B2BE43 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EDF8468529E3324500B2BE43 /* JobQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				ED32311D29BF528800725931 /* SuffixSequence.swift */,
 				EDEF23E429BF64CF00220895 /* SuffixArrayService.swift */,
 				EDF8468129E2C88200B2BE43 /* SuffixViewModel.swift */,
+				EDF8468529E3324500B2BE43 /* JobQueue.swift */,
 			);
 			path = SuffixArray;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				ED32311029BF525D00725931 /* SuffixArrayApp.swift in Sources */,
 				EDF8468229E2C88200B2BE43 /* SuffixViewModel.swift in Sources */,
 				ED32311E29BF528800725931 /* SuffixSequence.swift in Sources */,
+				EDF8468629E3324500B2BE43 /* JobQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
